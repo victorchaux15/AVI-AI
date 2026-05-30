@@ -315,9 +315,9 @@
     <div class="service-card">
       <span class="service-num">01</span>
       <span class="service-icon">⚡</span>
-      <h3>Flujos N8N & Make</h3>
-      <p>Automatizaciones robustas y escalables que conectan APIs, bases de datos y herramientas empresariales sin código complejo.</p>
-      <span class="service-tag">N8N · Make · Zapier</span>
+      <h3>Flujos N8N</h3>
+      <p>Automatizaciones robustas y escalables que conectan APIs, bases de datos, softwares y aplicaciones empresariales sin código complejo.</p>
+      <span class="service-tag">N8N · Software &amp; Apps</span>
     </div>
     <div class="service-card">
       <span class="service-num">02</span>
@@ -353,6 +353,20 @@
       <h3>Automatización Documental</h3>
       <p>Generación automática de reportes, facturas electrónicas y documentos a partir de tus datos operativos.</p>
       <span class="service-tag">PDF · DIAN · Alegra</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">07</span>
+      <span class="service-icon">🖥️</span>
+      <h3>Desarrollo de Software</h3>
+      <p>Construimos soluciones de software a medida que digitalizan y optimizan los procesos clave de tu negocio, integradas con tus herramientas actuales.</p>
+      <span class="service-tag">Python · SQL · Oracle · Desarrollo a medida</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">08</span>
+      <span class="service-icon">📱</span>
+      <h3>Desarrollo de Apps</h3>
+      <p>Diseñamos y desarrollamos aplicaciones web y móviles funcionales, conectadas a tus datos y flujos de automatización para operar en tiempo real.</p>
+      <span class="service-tag">Web App · Mobile · Integraciones</span>
     </div>
   </div>
 </div>
@@ -504,7 +518,7 @@
     </div>
 
     <div class="reveal">
-      <div class="contact-form">
+      <form class="contact-form" id="contactForm">
         <div class="form-group">
           <label>Nombre completo</label>
           <input type="text" placeholder="Tu nombre"/>
@@ -517,7 +531,7 @@
           <label>¿Qué quieres automatizar?</label>
           <select>
             <option value="">Selecciona una categoría</option>
-            <option>Flujos de automatización (N8N / Make)</option>
+            <option>Flujos de automatización (N8N)</option>
             <option>Agente / Chatbot con IA</option>
             <option>Integración de CRM</option>
             <option>Pipeline de datos</option>
@@ -529,7 +543,8 @@
           <label>Describe tu proceso</label>
           <textarea rows="4" placeholder="Cuéntanos qué haces hoy manualmente..."></textarea>
         </div>
-        <a href="https://wa.link/s4pam0" target="_blank" class="btn-primary" style="text-align:center; display:block; padding:1rem;">Enviar por WhatsApp →</a>
+        <button type="submit" class="form-submit">Enviar mensaje →</button>
+      </form>
       </div>
     </div>
   </div>
@@ -560,6 +575,26 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(r => io.observe(r));
+
+  // Form submit -> mailto
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombre = form.querySelector('input[type="text"]').value;
+      const email = form.querySelector('input[type="email"]').value;
+      const servicio = form.querySelector('select').value;
+      const mensaje = form.querySelector('textarea').value;
+      const body = encodeURIComponent(
+        'Nombre: ' + nombre + '\n' +
+        'Email: ' + email + '\n' +
+        'Servicio: ' + servicio + '\n\n' +
+        'Mensaje:\n' + mensaje
+      );
+      window.location.href = 'mailto:vcc991@outlook.es?subject=Consulta AVI iA - ' + encodeURIComponent(servicio) + '&body=' + body;
+    });
+  }
+
 </script>
 </body>
 </html>
